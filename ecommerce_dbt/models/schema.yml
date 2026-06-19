@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: fact_orders
+    description: "Joined fact table with orders, customers and products"
+    columns:
+      - name: order_id
+        description: "Unique order identifier"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Customer identifier"
+        tests:
+          - not_null
+      - name: total_amount
+        description: "Total order value"
+        tests:
+          - not_null
+      - name: status
+        description: "Order status"
+        tests:
+          - accepted_values:
+              values: ['completed', 'pending', 'cancelled', 'refunded']
